@@ -4,10 +4,15 @@
 
 [[redirects]]
   from = "/winter-tires"
-  to = "/winter-tires.html"
-  status = 200
+  to = "/"
+  status = 301
 
 [[redirects]]
   from = "/winter-tires/"
-  to = "/winter-tires.html"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/winter-tires.html"
+  to = "/"
   status = 301
