@@ -1,5 +1,9 @@
 # A1 Mystery
 
-Source for [a1mystery.com](https://a1mystery.com).
+Cinematic assets and source for [a1mystery.com](https://a1mystery.com).
 
-The background is a muted loop of the Pickering shop.
+## Assets
+
+- Logo cinematic video (8s A1 Mystery gear/wrench logo): pending upload as `assets/a1-mystery-logo-cinematic.mp4`
+
+Sogni Creative Agent Skill **v3.58.0** is installed and ready for generating/implementing cinematic content for the site and Google Maps.
