@@ -10,11 +10,11 @@
 <body>
   <header class="header">
     <div class="container">
-      <h1><a href="index.html">A1 Mystery Auto Repair</a></h1>
+      <h1><a href='/'>A1 Mystery Auto Repair</a></h1>
       <p class="tagline">Your car fixed right.</p>
       <nav>
-        <a href="index.html">Home</a>
-        <a href="winter-tires.html" class="active">Winter Tires</a>
+        <a href='/'>Home</a>
+        <a class='active' href='/winter-tires'>Winter Tires</a>
         <a href="tel:6472784427">647-278-4427</a>
       </nav>
     </div>
@@ -79,7 +79,7 @@
       <h2>Book Your Appointment</h2>
       <p>Call <a href="tel:6472784427">647-278-4427</a> or DM <a href="https://www.instagram.com/a1mystery/" target="_blank">@a1mystery</a> and say <strong>FIRST SNOW</strong>.</p>
       <p>Have ready: year, make, model, tire size (if known), whether tires are already on rims, and TPMS sensors?</p>
-      <form name="winter-tires" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+      <form method='POST' name='winter-tires'>
         <input type="hidden" name="form-name" value="winter-tires">
         <p class="hidden"><label>Don't fill this out: <input name="bot-field"></label></p>
         <label>Name <input type="text" name="name" required></label>
