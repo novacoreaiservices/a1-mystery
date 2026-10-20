@@ -14,8 +14,13 @@ body { font-family: system-ui, -apple-system, sans-serif; margin: 0; color: var(
 .tagline { margin: 0.25rem 0 0.5rem; opacity: 0.9; font-size: 0.95rem; }
 nav a { margin-right: 1.25rem; color: white; text-decoration: none; }
 nav a.active { border-bottom: 2px solid var(--accent); }
-.hero { background: linear-gradient(135deg, var(--navy), #1a3a5c); color: white; padding: 3rem 0; text-align: center; }
-.hero h2 { font-size: 2.4rem; margin: 0 0 0.5rem; }
+.hero { position: relative; overflow: hidden; margin: 0; background: linear-gradient(135deg, var(--navy), #1a3a5c); color: white; padding: 3rem 0; text-align: center; }
+.hero h2 { font-size: 2.4rem; margin: 0 0 0.5rem; color: white; }
+.cine-bg { position: absolute; inset: 0; z-index: 0; background: #0a1628 url("cinematic-bg.png") center / cover no-repeat; }
+.cine-bg video { width: 100%; height: 100%; object-fit: cover; display: block; transform: scale(1.08); }
+.cine-bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10, 22, 40, 0.42), rgba(10, 22, 40, 0.62)); }
+.hero .container { position: relative; z-index: 1; }
+@media (prefers-reduced-motion: reduce) { .cine-bg video { display: none; } }
 .subtitle { font-size: 1.15rem; opacity: 0.95; }
 .cta-button { display: inline-block; background: var(--accent); color: white; padding: 0.85rem 1.5rem; margin: 0.5rem; border-radius: 6px; text-decoration: none; font-weight: 600; }
 .cta-button.secondary { background: transparent; border: 2px solid white; }
