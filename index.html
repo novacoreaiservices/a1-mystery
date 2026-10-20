@@ -1,52 +1,1186 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>A1 Mystery Auto Repair | Licensed Technician | Pickering</title>
-  <meta name="description" content="Licensed automotive service technician in Pickering. Diagnostics, repairs, maintenance, and now winter tire changeover & sales. Your car fixed right.">
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A1 Mystery Auto Repair | Licensed Technician | Pickering</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+  :root {
+    --orange: #F5A623;
+    --orange-dark: #d48a0a;
+    --orange-light: #ffbe50;
+    --black: #111111;
+    --dark: #1a1a1a;
+    --darker: #0d0d0d;
+    --white: #f5f5f5;
+    --grey: #888;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Barlow', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 48px;
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 2px solid var(--orange);
+  }
+
+  .nav-logo {
+    display: flex; align-items: center; gap: 12px;
+  }
+
+  .nav-logo svg { width: 38px; height: 38px; }
+
+  .nav-logo-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.7rem;
+    letter-spacing: 2px;
+    color: var(--white);
+  }
+  .nav-logo-text span { color: var(--orange); }
+
+  .nav-links {
+    display: flex; gap: 36px; list-style: none;
+  }
+  .nav-links a {
+    color: var(--grey);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--orange); }
+
+  .nav-cta {
+    background: var(--orange);
+    color: var(--black) !important;
+    padding: 10px 22px;
+    border-radius: 2px;
+    font-weight: 700 !important;
+  }
+  .nav-cta:hover { background: var(--orange-light); color: var(--black) !important; }
+
+  /* ─── HERO ─── */
+  #hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 120px 48px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background:
+      radial-gradient(ellipse 60% 80% at 70% 50%, rgba(245,166,35,0.08) 0%, transparent 70%),
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 79px,
+        rgba(245,166,35,0.04) 79px,
+        rgba(245,166,35,0.04) 80px
+      ),
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 79px,
+        rgba(245,166,35,0.04) 79px,
+        rgba(245,166,35,0.04) 80px
+      );
+  }
+
+  .hero-accent {
+    position: absolute; right: -60px; top: 50%;
+    transform: translateY(-50%);
+    width: 640px; height: 640px;
+    border-radius: 50%;
+    border: 80px solid rgba(245,166,35,0.06);
+    z-index: 0;
+  }
+  .hero-accent2 {
+    position: absolute; right: 40px; top: 50%;
+    transform: translateY(-50%);
+    width: 420px; height: 420px;
+    border-radius: 50%;
+    border: 2px solid rgba(245,166,35,0.15);
+    z-index: 0;
+  }
+
+  .hero-content { position: relative; z-index: 1; max-width: 640px; }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(245,166,35,0.12);
+    border: 1px solid rgba(245,166,35,0.35);
+    padding: 6px 14px;
+    border-radius: 2px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 28px;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .hero-badge::before {
+    content: '';
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--orange);
+    animation: pulse 1.5s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.4); }
+  }
+
+  h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3.5rem, 8vw, 6.5rem);
+    line-height: 0.95;
+    letter-spacing: 2px;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+  h1 .accent { color: var(--orange); }
+  h1 .block { display: block; }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    color: #aaa;
+    line-height: 1.6;
+    margin: 24px 0 40px;
+    max-width: 480px;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+
+  .hero-actions {
+    display: flex; gap: 16px; flex-wrap: wrap;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--orange);
+    color: var(--black);
+    padding: 16px 32px;
+    font-family: 'Barlow', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background 0.2s, transform 0.2s;
+    border: none; cursor: pointer;
+  }
+  .btn-primary:hover { background: var(--orange-light); transform: translateY(-2px); }
+
+  .btn-outline {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: transparent;
+    color: var(--white);
+    padding: 16px 32px;
+    font-family: 'Barlow', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 2px;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--orange); color: var(--orange); transform: translateY(-2px); }
+
+  .hero-stats {
+    display: flex; gap: 48px; margin-top: 64px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    animation: fadeUp 0.6s 0.4s ease both;
+  }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.4rem;
+    color: var(--orange);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.75rem;
+    color: var(--grey);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-top: 4px;
+  }
+
+  /* ─── LOGO SVG ─── */
+  .hero-logo-wrap {
+    position: absolute; right: 8%; top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    animation: fadeIn 1s 0.5s ease both;
+  }
+
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes rotateSlow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+  .hero-logo-svg {
+    width: 340px; height: 340px;
+    opacity: 0.18;
+  }
+
+  /* ─── TICKER ─── */
+  .ticker {
+    background: var(--orange);
+    overflow: hidden;
+    padding: 12px 0;
+    white-space: nowrap;
+  }
+  .ticker-inner {
+    display: inline-flex; gap: 0;
+    animation: ticker 28s linear infinite;
+  }
+  @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  .ticker-item {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 3px;
+    color: var(--black);
+    padding: 0 40px;
+  }
+  .ticker-sep { color: rgba(0,0,0,0.3); }
+
+  /* ─── SECTION BASE ─── */
+  section { padding: 100px 48px; }
+
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 16px;
+  }
+
+  h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    letter-spacing: 2px;
+    line-height: 1;
+    margin-bottom: 20px;
+  }
+
+  /* ─── SERVICES ─── */
+  #services { background: var(--darker); }
+
+  .services-header {
+    max-width: 600px;
+    margin-bottom: 64px;
+  }
+
+  .services-header p {
+    color: #999;
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 12px;
+  }
+
+  /* ── Flip card wrapper ── */
+  .flip-wrap {
+    perspective: 1000px;
+    min-height: 280px;
+    cursor: pointer;
+  }
+
+  .flip-inner {
+    position: relative;
+    width: 100%; height: 100%;
+    min-height: 280px;
+    transform-style: preserve-3d;
+    transition: transform 0.55s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+  }
+
+  .flip-wrap.flipped .flip-inner {
+    transform: rotateY(180deg);
+  }
+
+  /* ── Shared face styles ── */
+  .card-front,
+  .card-back {
+    position: absolute; inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    padding: 36px 28px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── FRONT ── */
+  .card-front {
+    background: var(--dark);
+    border-left: 3px solid transparent;
+    transition: border-color 0.3s, background 0.3s;
+  }
+  .flip-wrap:hover .card-front {
+    background: #1f1f1f;
+    border-left-color: var(--orange);
+  }
+
+  .service-icon {
+    width: 44px; height: 44px;
+    margin-bottom: 20px;
+    color: var(--orange);
+    flex-shrink: 0;
+  }
+
+  .card-front h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.35rem;
+    letter-spacing: 1.5px;
+    margin-bottom: 10px;
+  }
+
+  .card-front p {
+    font-size: 0.85rem;
+    color: #888;
+    line-height: 1.65;
+    flex: 1;
+  }
+
+  .card-flip-hint {
+    margin-top: 20px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: var(--orange);
+    display: flex; align-items: center; gap: 6px;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+  }
+  .flip-wrap:hover .card-flip-hint { opacity: 1; }
+  .card-flip-hint svg { transition: transform 0.3s; }
+  .flip-wrap:hover .card-flip-hint svg { transform: rotateY(180deg); }
+
+  /* ── BACK ── */
+  .card-back {
+    background: var(--orange);
+    transform: rotateY(180deg);
+  }
+
+  .card-back-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 1.5px;
+    color: var(--black);
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(0,0,0,0.15);
+  }
+
+  .back-price-list {
+    display: flex; flex-direction: column; gap: 0;
+    flex: 1;
+  }
+
+  .back-price-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 9px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    gap: 12px;
+  }
+  .back-price-row:last-child { border-bottom: none; }
+
+  .back-price-label {
+    font-size: 0.78rem;
+    color: rgba(0,0,0,0.75);
+    font-weight: 500;
+    line-height: 1.3;
+    flex: 1;
+  }
+
+  .back-price-value {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    color: var(--black);
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+
+  .back-disclaimer {
+    margin-top: 14px;
+    font-size: 0.68rem;
+    color: rgba(0,0,0,0.55);
+    line-height: 1.4;
+  }
+
+  .back-flip-back {
+    margin-top: 12px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(0,0,0,0.5);
+    display: flex; align-items: center; gap: 5px;
+  }
+
+  /* ─── WHY US ─── */
+  #why {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .why-visual {
+    position: relative;
+  }
+
+  .why-big-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18rem;
+    color: rgba(245,166,35,0.07);
+    line-height: 1;
+    position: absolute; top: -40px; left: -20px;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .why-card {
+    background: var(--dark);
+    border: 1px solid rgba(245,166,35,0.12);
+    padding: 32px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .why-card-header {
+    display: flex; align-items: center; gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .why-icon-wrap {
+    width: 48px; height: 48px;
+    background: var(--orange);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .why-card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+  }
+  .why-card p { color: #888; font-size: 0.88rem; line-height: 1.65; }
+
+  .why-cards-list { display: flex; flex-direction: column; gap: 16px; }
+
+  /* ─── CTA STRIP ─── */
+  #cta-strip {
+    background: var(--orange);
+    padding: 64px 48px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 32px; flex-wrap: wrap;
+  }
+
+  .cta-strip-text h2 { color: var(--black); margin-bottom: 8px; }
+  .cta-strip-text p { color: rgba(0,0,0,0.65); font-size: 1rem; }
+
+  .btn-dark {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--black);
+    color: var(--white);
+    padding: 18px 36px;
+    font-family: 'Barlow', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background 0.2s, transform 0.2s;
+    white-space: nowrap;
+    border: none; cursor: pointer;
+  }
+  .btn-dark:hover { background: #222; transform: translateY(-2px); }
+
+  /* ─── CONTACT ─── */
+  #contact { background: var(--darker); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    margin-top: 56px;
+  }
+
+  .contact-info { display: flex; flex-direction: column; gap: 32px; }
+
+  .contact-item {
+    display: flex; gap: 20px; align-items: flex-start;
+  }
+
+  .contact-item-icon {
+    width: 44px; height: 44px;
+    background: rgba(245,166,35,0.12);
+    border: 1px solid rgba(245,166,35,0.25);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    color: var(--orange);
+  }
+
+  .contact-item h4 {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin-bottom: 6px;
+  }
+  .contact-item p, .contact-item a {
+    color: var(--white);
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .contact-item a:hover { color: var(--orange); }
+
+  /* ─── FORM ─── */
+  .contact-form { display: flex; flex-direction: column; gap: 16px; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  .form-group { display: flex; flex-direction: column; gap: 8px; }
+
+  .form-group label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--grey);
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    background: var(--dark);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: var(--white);
+    padding: 14px 16px;
+    font-family: 'Barlow', sans-serif;
+    font-size: 0.95rem;
+    border-radius: 2px;
+    outline: none;
+    transition: border-color 0.2s;
+    -webkit-appearance: none;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--orange);
+  }
+  .form-group textarea { resize: vertical; min-height: 120px; }
+  .form-group select option { background: var(--dark); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--darker);
+    border-top: 2px solid var(--orange);
+    padding: 40px 48px;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 20px;
+  }
+
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+    color: var(--white);
+  }
+  .footer-logo span { color: var(--orange); }
+
+  .footer-copy {
+    font-size: 0.8rem;
+    color: var(--grey);
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    #hero { padding: 110px 24px 60px; }
+    .hero-logo-wrap { display: none; }
+    section { padding: 70px 24px; }
+    #why { grid-template-columns: 1fr; gap: 40px; }
+    .why-big-num { display: none; }
+    .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    .form-row { grid-template-columns: 1fr; }
+    #cta-strip { padding: 48px 24px; }
+    footer { padding: 32px 24px; flex-direction: column; text-align: center; }
+  }
+</style>
 </head>
 <body>
-  <header class="header">
-    <div class="container">
-      <h1>A1 Mystery Auto Repair</h1>
-      <p class="tagline">Your car fixed right.</p>
-      <nav>
-        <a class='active' href='/'>Home</a>
-        <a href='/winter-tires'>Winter Tires</a>
-        <a href="tel:6472784427">647-278-4427</a>
-      </nav>
-    </div>
-  </header>
 
-  <section class="hero">
-    <div class="container">
-      <h2>Before the First Snow</h2>
-      <p>Winter tire changeovers and new or quality used sets now available. Licensed technician. Clear price. Book by Oct 31 for a free Winter Readiness Check.</p>
-      <a class='cta-button' href='/winter-tires'>Winter Tires & Changeover</a>
-      <a href="tel:6472784427" class="cta-button secondary">Call Now</a>
-    </div>
-  </section>
+<!-- ─── NAV ─── -->
+<nav>
+  <div class="nav-logo">
+    <!-- Logo SVG recreated from business card -->
+    <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Speedometer arc -->
+      <path d="M10 38 A22 22 0 0 1 50 38" stroke="rgba(255,255,255,0.4)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <!-- Speedometer ticks -->
+      <line x1="10" y1="38" x2="12.5" y2="36" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+      <line x1="30" y1="16" x2="30" y2="19" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+      <line x1="50" y1="38" x2="47.5" y2="36" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+      <!-- Needle -->
+      <line x1="30" y1="38" x2="43" y2="22" stroke="rgba(255,255,255,0.7)" stroke-width="2" stroke-linecap="round"/>
+      <!-- Wrench body -->
+      <rect x="8" y="33" width="44" height="10" rx="5" fill="#F5A623"/>
+      <!-- Wrench head left -->
+      <circle cx="13" cy="38" r="8" fill="#F5A623"/>
+      <circle cx="13" cy="38" r="4" fill="#1a1a1a"/>
+      <!-- Wrench head right -->
+      <circle cx="47" cy="38" r="8" fill="#F5A623"/>
+      <circle cx="47" cy="38" r="4" fill="#1a1a1a"/>
+    </svg>
+    <span class="nav-logo-text"><span>A1</span> Mystery</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="tel:6472784427" class="nav-cta">Call Now</a></li>
+  </ul>
+</nav>
 
-  <main class="container">
-    <section>
-      <h2>Full-Service Auto Repair in Pickering</h2>
-      <p>Professional diagnostics, repairs, and maintenance by a licensed automotive service technician. All makes and models. Honest pricing — final price depends on your vehicle, and we quote before we start.</p>
-      <p><a href='/winter-tires'>See winter tire services →</a></p>
-    </section>
-    <section>
-      <h2>Ready to Book?</h2>
-      <p>Call <a href="tel:6472784427">647-278-4427</a> or email <a href="mailto:a1automystery@gmail.com">a1automystery@gmail.com</a></p>
-      <p>Unit A, 941 Dillingham Rd, Pickering, ON<br>Monday–Saturday 10:30 AM – 6:00 PM</p>
-    </section>
-  </main>
+<!-- ─── HERO ─── -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-accent"></div>
+  <div class="hero-accent2"></div>
 
-  <footer>
-    <div class="container">
-      <p>A1 Mystery Auto Repair · Unit A, 941 Dillingham Rd, Pickering, ON</p>
-      <p><a href="tel:6472784427">647-278-4427</a> · @a1mystery</p>
+  <div class="hero-content">
+    <div class="hero-badge">Licensed Technician · Pickering, ON</div>
+    <h1>
+      <span class="block">YOUR CAR</span>
+      <span class="block accent">FIXED</span>
+      <span class="block">RIGHT.</span>
+    </h1>
+    <p class="hero-sub">
+      A1 Mystery Auto Repair — professional diagnostics, repairs, and maintenance by a licensed technician. We fix all makes and models, right here in Pickering.
+    </p>
+    <div class="hero-actions">
+      <a href="tel:6472784427" class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.11 19.79 19.79 0 011.02 2.48 2 2 0 013 .3h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L7.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
+        647-278-4427
+      </a>
+      <a href="#services" class="btn-outline">
+        Our Services
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
     </div>
-  </footer>
+
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">ALL</div>
+        <div class="stat-label">Makes & Models</div>
+      </div>
+      <div>
+        <div class="stat-num">ON-SITE</div>
+        <div class="stat-label">Unit A, Pickering</div>
+      </div>
+      <div>
+        <div class="stat-num">LICENSED</div>
+        <div class="stat-label">Certified Tech</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero Logo Watermark -->
+  <div class="hero-logo-wrap">
+    <svg class="hero-logo-svg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M30 130 A80 80 0 0 1 170 130" stroke="#F5A623" stroke-width="6" fill="none" stroke-linecap="round"/>
+      <line x1="30" y1="130" x2="38" y2="120" stroke="#F5A623" stroke-width="4"/>
+      <line x1="100" y1="50" x2="100" y2="62" stroke="#F5A623" stroke-width="4"/>
+      <line x1="170" y1="130" x2="162" y2="120" stroke="#F5A623" stroke-width="4"/>
+      <line x1="55" y1="72" x2="63" y2="80" stroke="#F5A623" stroke-width="4"/>
+      <line x1="145" y1="72" x2="137" y2="80" stroke="#F5A623" stroke-width="4"/>
+      <line x1="100" y1="130" x2="148" y2="74" stroke="#F5A623" stroke-width="5" stroke-linecap="round"/>
+      <rect x="20" y="118" width="160" height="30" rx="15" fill="#F5A623"/>
+      <circle cx="35" cy="133" r="18" fill="#F5A623"/>
+      <circle cx="35" cy="133" r="9" fill="#111"/>
+      <circle cx="165" cy="133" r="18" fill="#F5A623"/>
+      <circle cx="165" cy="133" r="9" fill="#111"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ─── TICKER ─── -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item">Engine Diagnostics <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">Brake Service <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">Oil Changes <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">Suspension Repair <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">Electrical Diagnostics <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">Exhaust Systems <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">Transmission Service <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">A/C Service <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">Licensed Technician <span class="ticker-sep">◆</span></span>
+    <!-- Duplicate for seamless loop -->
+    <span class="ticker-item">Engine Diagnostics <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">Brake Service <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">Oil Changes <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">Suspension Repair <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">Electrical Diagnostics <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">Exhaust Systems <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">Transmission Service <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">A/C Service <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">Licensed Technician <span class="ticker-sep">◆</span></span>
+  </div>
+</div>
+
+<!-- ─── SERVICES ─── -->
+<section id="services">
+  <div class="services-header">
+    <div class="section-label">What We Do</div>
+    <h2>Full-Service Auto Repair</h2>
+    <p>From routine maintenance to complex diagnostics — handled with licensed precision. <strong style="color:var(--orange);">Click any card to see pricing.</strong></p>
+  </div>
+  <div class="services-grid">
+
+    <!-- 1 Engine -->
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="card-front">
+          <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="10"/><path d="M24 4v4M24 40v4M4 24h4M40 24h4M7.76 7.76l2.83 2.83M37.41 37.41l2.83 2.83M7.76 40.24l2.83-2.83M37.41 10.59l2.83-2.83"/></svg>
+          <h3>Engine Diagnostics</h3>
+          <p>Full OBD-II scan to identify fault codes, live data, and root causes — so repairs are done right the first time.</p>
+          <div class="card-flip-hint"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4-4.64 4.36A9 9 0 0 1 3.51 15"/></svg> Flip for pricing</div>
+        </div>
+        <div class="card-back">
+          <div class="card-back-title">Engine Diagnostics</div>
+          <div class="back-price-list">
+            <div class="back-price-row"><span class="back-price-label">Diagnostic Scan (Check Engine)</span><span class="back-price-value">From $80</span></div>
+            <div class="back-price-row"><span class="back-price-label">Full Engine Inspection</span><span class="back-price-value">From $120</span></div>
+            <div class="back-price-row"><span class="back-price-label">Compression / Leak-Down Test</span><span class="back-price-value">From $100</span></div>
+          </div>
+          <div class="back-disclaimer">Starting estimates. Final price depends on vehicle make & model.</div>
+          <div class="back-flip-back"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4-4.64 4.36A9 9 0 0 1 3.51 15"/></svg> Tap to flip back</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2 Brakes -->
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="card-front">
+          <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="16"/><circle cx="24" cy="24" r="6"/><path d="M24 8v4M24 36v4M8 24h4M36 24h4"/></svg>
+          <h3>Brake Service</h3>
+          <p>Pads, rotors, calipers, and brake fluid — complete brake inspections and repairs for all conditions.</p>
+          <div class="card-flip-hint"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4-4.64 4.36A9 9 0 0 1 3.51 15"/></svg> Flip for pricing</div>
+        </div>
+        <div class="card-back">
+          <div class="card-back-title">Brake Service</div>
+          <div class="back-price-list">
+            <div class="back-price-row"><span class="back-price-label">Brake Pad Replacement (per axle)</span><span class="back-price-value">From $120</span></div>
+            <div class="back-price-row"><span class="back-price-label">Pad + Rotor Replacement (per axle)</span><span class="back-price-value">From $220</span></div>
+            <div class="back-price-row"><span class="back-price-label">Brake Fluid Flush</span><span class="back-price-value">From $80</span></div>
+            <div class="back-price-row"><span class="back-price-label">Brake Inspection</span><span class="back-price-value">From $40</span></div>
+          </div>
+          <div class="back-disclaimer">Starting estimates. Final price depends on vehicle make & model.</div>
+          <div class="back-flip-back"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4-4.64 4.36A9 9 0 0 1 3.51 15"/></svg> Tap to flip back</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 Suspension -->
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="card-front">
+          <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 24c0-9.94 8.06-18 18-18s18 8.06 18 18"/><path d="M14 32l-8 8M34 32l8 8"/><rect x="16" y="28" width="16" height="8" rx="2"/></svg>
+          <h3>Suspension & Steering</h3>
+          <p>Shocks, struts, tie rods, ball joints — restore your ride quality and steering precision.</p>
+          <div class="card-flip-hint"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4-4.64 4.36A9 9 0 0 1 3.51 15"/></svg> Flip for pricing</div>
+        </div>
+        <div class="card-back">
+          <div class="card-back-title">Suspension & Steering</div>
+          <div class="back-price-list">
+            <div class="back-price-row"><span class="back-price-label">Strut / Shock (per corner)</span><span class="back-price-value">From $180</span></div>
+            <div class="back-price-row"><span class="back-price-label">Ball Joint Replacement</span><span class="back-price-value">From $150</span></div>
+            <div class="back-price-row"><span class="back-price-label">Tie Rod End Replacement</span><span class="back-price-value">From $120</span></div>
+            <div class="back-price-row"><span class="back-price-label">Wheel Alignment</span><span class="back-price-value">From $90</span></div>
+          </div>
+          <div class="back-disclaimer">Starting estimates. Final price depends on vehicle make & model.</div>
+          <div class="back-flip-back"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4-4.64 4.36A9 9 0 0 1 3.51 15"/></svg> Tap to flip back</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 Electrical -->
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="card-front">
+          <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 34V14a4 4 0 014-4h20a4 4 0 014 4v20a4 4 0 01-4 4H14a4 4 0 01-4-4z"/><path d="M18 20h12M18 24h8M18 28h10"/></svg>
+          <h3>Electrical Systems</h3>
+          <p>Battery, alternator, starters, and wiring diagnostics. We resolve electrical faults that leave other shops stumped.</p>
+          <div class="card-flip-hint"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4-4.64 4.36A9 9 0 0 1 3.51 15"/></svg> Flip for pricing</div>
+        </div>
+        <div class="card-back">
+          <div class="card-back-title">Electrical Systems</div>
+          <div class="back-price-list">
+            <div class="back-price-row"><span class="back-price-label">Battery Replacement</span><span class="back-price-value">From $160</span></div>
+            <div class="back-price-row"><span class="back-price-label">Alternator Replacement</span><span class="back-price-value">From $280</span></div>
+            <div class="back-price-row"><span class="back-price-label">Starter Replacement</span><span class="back-price-value">From $220</span></div>
+            <div class="back-price-row"><span class="back-price-label">Electrical Fault Diagnosis</span><span class="back-price-value">From $90</span></div>
+          </div>
+          <div class="back-disclaimer">Starting estimates. Final price depends on vehicle make & model.</div>
+          <div class="back-flip-back"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4-4.64 4.36A9 9 0 0 1 3.51 15"/></svg> Tap to flip back</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5 Oil -->
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="card-front">
+          <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 16h32M8 24h32M8 32h24"/><circle cx="38" cy="32" r="5"/><path d="M38 27v3l2 2"/></svg>
+          <h3>Oil & Fluid Services</h3>
+          <p>Oil changes, coolant flushes, transmission fluid, power steering — complete fluid maintenance on schedule.</p>
+          <div class="card-flip-hint"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4-4.64 4.36A9 9 0 0 1 3.51 15"/></svg> Flip for pricing</div>
+        </div>
+        <div class="card-back">
+          <div class="card-back-title">Oil & Fluid Services</div>
+          <div class="back-price-list">
+            <div class="back-price-row"><span class="back-price-label">Conventional Oil Change</span><span class="back-price-value">From $60</span></div>
+            <div class="back-price-row"><span class="back-price-label">Synthetic Oil Change</span><span class="back-price-value">From $90</span></div>
+            <div class="back-price-row"><span class="back-price-label">Coolant Flush</span><span class="back-price-value">From $110</span></div>
+            <div class="back-price-row"><span class="back-price-label">Full Fluid Service Package</span><span class="back-price-value">From $180</span></div>
+          </div>
+          <div class="back-disclaimer">Starting estimates. Final price depends on vehicle make & model.</div>
+          <div class="back-flip-back"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4-4.64 4.36A9 9 0 0 1 3.51 15"/></svg> Tap to flip back</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6 A/C -->
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="card-front">
+          <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 28c0-7.73 6.27-14 14-14s14 6.27 14 14"/><path d="M6 28h4M38 28h4M24 14v-4"/><path d="M14 38h20v4H14z"/></svg>
+          <h3>A/C & Heating</h3>
+          <p>Recharge, leak repair, and component replacement. Stay cool in summer and warm in winter.</p>
+          <div class="card-flip-hint"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4-4.64 4.36A9 9 0 0 1 3.51 15"/></svg> Flip for pricing</div>
+        </div>
+        <div class="card-back">
+          <div class="card-back-title">A/C & Heating</div>
+          <div class="back-price-list">
+            <div class="back-price-row"><span class="back-price-label">A/C Recharge (Refrigerant)</span><span class="back-price-value">From $120</span></div>
+            <div class="back-price-row"><span class="back-price-label">A/C Leak Diagnosis</span><span class="back-price-value">From $90</span></div>
+            <div class="back-price-row"><span class="back-price-label">Cabin Air Filter Replacement</span><span class="back-price-value">From $50</span></div>
+            <div class="back-price-row"><span class="back-price-label">Heater Core Inspection</span><span class="back-price-value">From $80</span></div>
+          </div>
+          <div class="back-disclaimer">Starting estimates. Final price depends on vehicle make & model.</div>
+          <div class="back-flip-back"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4-4.64 4.36A9 9 0 0 1 3.51 15"/></svg> Tap to flip back</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7 Transmission -->
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="card-front">
+          <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="20" width="40" height="16" rx="3"/><path d="M12 20V12a4 4 0 014-4h16a4 4 0 014 4v8"/><circle cx="14" cy="28" r="3"/><circle cx="34" cy="28" r="3"/></svg>
+          <h3>Transmission Service</h3>
+          <p>Fluid and filter service, diagnostics for automatic and manual transmissions — keeping your drivetrain healthy.</p>
+          <div class="card-flip-hint"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4-4.64 4.36A9 9 0 0 1 3.51 15"/></svg> Flip for pricing</div>
+        </div>
+        <div class="card-back">
+          <div class="card-back-title">Transmission Service</div>
+          <div class="back-price-list">
+            <div class="back-price-row"><span class="back-price-label">Auto Transmission Fluid Change</span><span class="back-price-value">From $160</span></div>
+            <div class="back-price-row"><span class="back-price-label">Manual Gearbox Fluid Change</span><span class="back-price-value">From $120</span></div>
+            <div class="back-price-row"><span class="back-price-label">Transmission Diagnostic Scan</span><span class="back-price-value">From $90</span></div>
+          </div>
+          <div class="back-disclaimer">Starting estimates. Final price depends on vehicle make & model.</div>
+          <div class="back-flip-back"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4-4.64 4.36A9 9 0 0 1 3.51 15"/></svg> Tap to flip back</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8 Maintenance -->
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="card-front">
+          <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M24 6l4 10h10l-8 6 3 10-9-6-9 6 3-10-8-6h10z"/></svg>
+          <h3>General Maintenance</h3>
+          <p>Timing belts, spark plugs, air filters, wiper blades, and everything in between. Stay on schedule.</p>
+          <div class="card-flip-hint"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4-4.64 4.36A9 9 0 0 1 3.51 15"/></svg> Flip for pricing</div>
+        </div>
+        <div class="card-back">
+          <div class="card-back-title">General Maintenance</div>
+          <div class="back-price-list">
+            <div class="back-price-row"><span class="back-price-label">Spark Plug Replacement</span><span class="back-price-value">From $100</span></div>
+            <div class="back-price-row"><span class="back-price-label">Air Filter Replacement</span><span class="back-price-value">From $40</span></div>
+            <div class="back-price-row"><span class="back-price-label">Timing Belt Replacement</span><span class="back-price-value">From $450</span></div>
+            <div class="back-price-row"><span class="back-price-label">Multi-Point Inspection</span><span class="back-price-value">From $60</span></div>
+          </div>
+          <div class="back-disclaimer">Starting estimates. Final price depends on vehicle make & model.</div>
+          <div class="back-flip-back"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4-4.64 4.36A9 9 0 0 1 3.51 15"/></svg> Tap to flip back</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── WHY US ─── -->
+<section id="why" style="background: var(--black);">
+  <div class="why-visual">
+    <div class="why-big-num">A1</div>
+    <div class="why-cards-list">
+      <div class="why-card">
+        <div class="why-card-header">
+          <div class="why-icon-wrap">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2.5" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <h3>Licensed & Certified</h3>
+        </div>
+        <p>Mystery holds a full automotive service technician licence. You're not leaving your car with a hobbyist — you're getting professional-grade work.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-card-header">
+          <div class="why-icon-wrap">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3>Fast Turnaround</h3>
+        </div>
+        <p>We respect your time. Most jobs are diagnosed and quoted same-day, and we work efficiently to get you back on the road as fast as possible.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-card-header">
+          <div class="why-icon-wrap">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Honest Pricing</h3>
+        </div>
+        <p>No surprise charges. We give you a clear quote before any work starts and only do what's needed — no upselling, no fluff.</p>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="section-label">Why Choose Us</div>
+    <h2>THE SHOP PICKERING TRUSTS</h2>
+    <p style="color:#888; font-size:1rem; line-height:1.7; margin-bottom:40px;">
+      A1 Mystery Auto Repair is a locally-owned shop in Pickering run by a licensed technician. We treat every vehicle like it's our own — thorough diagnostics, quality parts, and repairs done right.
+    </p>
+    <p style="color:#888; font-size:1rem; line-height:1.7; margin-bottom:40px;">
+      Whether you drive a Japanese import, domestic truck, or European sedan — we have the tools and training to fix it. Located at Unit A, 941 Dillingham Rd., Pickering.
+    </p>
+    <a href="tel:6472784427" class="btn-primary">
+      Book Your Appointment
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ─── CTA STRIP ─── -->
+<div id="cta-strip">
+  <div class="cta-strip-text">
+    <h2>READY TO BOOK?</h2>
+    <p>Call us or send a message — we'll get you in fast.</p>
+  </div>
+  <a href="tel:6472784427" class="btn-dark">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.11 19.79 19.79 0 011.02 2.48 2 2 0 013 .3h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L7.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
+    647-278-4427
+  </a>
+</div>
+
+<!-- ─── CONTACT ─── -->
+<section id="contact">
+  <div class="section-label">Get In Touch</div>
+  <h2>CONTACT US</h2>
+
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="contact-item">
+        <div class="contact-item-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.11 19.79 19.79 0 011.02 2.48 2 2 0 013 .3h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L7.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
+        </div>
+        <div>
+          <h4>Phone</h4>
+          <a href="tel:6472784427">647-278-4427</a>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <div class="contact-item-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div>
+          <h4>Email</h4>
+          <a href="mailto:a1automystery@gmail.com">a1automystery@gmail.com</a>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <div class="contact-item-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div>
+          <h4>Location</h4>
+          <p>Unit A, 941 Dillingham Rd.<br>Pickering, Ontario</p>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <div class="contact-item-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <div>
+          <h4>Hours</h4>
+          <p>Mon–Sat: 10:30 AM – 6:00 PM<br>Sun: Closed</p>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <div class="contact-item-icon">
+          <!-- Instagram icon -->
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </div>
+        <div>
+          <h4>Instagram</h4>
+          <a href="https://www.instagram.com/a1mystery?igsh=eDVnZjJwMzN3b2dr" target="_blank" rel="noopener">@a1mystery</a>
+        </div>
+      </div>
+
+      <!-- QR Code -->
+      <div style="margin-top: 8px;">
+        <div style="font-size:0.72rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--grey); margin-bottom:12px;">Scan to Follow on Instagram</div>
+        <div id="qr-code" style="
+          display: inline-block;
+          padding: 12px;
+          background: #fff;
+          border: 3px solid var(--orange);
+          border-radius: 4px;
+        "></div>
+        <div style="font-size:0.75rem; color:var(--grey); margin-top:8px;">@a1mystery</div>
+      </div>
+    </div>
+
+    <!-- Contact Form -->
+    <div class="contact-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name</label>
+          <input type="text" placeholder="John">
+        </div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" placeholder="Smith">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" placeholder="647-000-0000">
+      </div>
+      <div class="form-group">
+        <label>Vehicle (Year / Make / Model)</label>
+        <input type="text" placeholder="e.g. 2019 Honda Civic">
+      </div>
+      <div class="form-group">
+        <label>Service Needed</label>
+        <select>
+          <option value="">Select a service...</option>
+          <option>Engine Diagnostics</option>
+          <option>Brake Service</option>
+          <option>Suspension & Steering</option>
+          <option>Electrical Systems</option>
+          <option>Oil & Fluid Service</option>
+          <option>A/C & Heating</option>
+          <option>Transmission Service</option>
+          <option>General Maintenance</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Message</label>
+        <textarea placeholder="Describe what's going on with your vehicle..."></textarea>
+      </div>
+      <button class="btn-primary" onclick="alert('Thanks! We\'ll be in touch shortly at the number provided.')">
+        Send Message
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-logo"><span>A1</span> Mystery Auto Repair</div>
+  <div class="footer-copy">Unit A, 941 Dillingham Rd., Pickering · 647-278-4427 · a1automystery@gmail.com</div>
+  <div class="footer-copy">
+    <a href="https://www.instagram.com/a1mystery?igsh=eDVnZjJwMzN3b2dr" target="_blank" rel="noopener" style="color:var(--orange); text-decoration:none;">@a1mystery on Instagram</a>
+  </div>
+  <div class="footer-copy">© 2026 A1 Mystery. All rights reserved.</div>
+</footer>
+
+<script>
+  new QRCode(document.getElementById("qr-code"), {
+    text: "https://www.instagram.com/a1mystery?igsh=eDVnZjJwMzN3b2dr",
+    width: 140,
+    height: 140,
+    colorDark: "#111111",
+    colorLight: "#ffffff",
+    correctLevel: QRCode.CorrectLevel.H
+  });
+</script>
+
+<script>
+  // Equalize flip card heights so front and back match
+  function equalizeCards() {
+    document.querySelectorAll('.flip-wrap').forEach(wrap => {
+      const front = wrap.querySelector('.card-front');
+      const back  = wrap.querySelector('.card-back');
+      // Reset
+      wrap.style.minHeight = '';
+      front.style.position = 'absolute';
+      back.style.position  = 'absolute';
+      const h = Math.max(front.scrollHeight, back.scrollHeight, 280);
+      wrap.style.minHeight     = h + 'px';
+      wrap.querySelector('.flip-inner').style.minHeight = h + 'px';
+    });
+  }
+  window.addEventListener('load', equalizeCards);
+  window.addEventListener('resize', equalizeCards);
+</script>
+
 </body>
 </html>
