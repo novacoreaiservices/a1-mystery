@@ -43,7 +43,7 @@
     display: flex; align-items: center; gap: 12px;
   }
 
-  .nav-logo svg { width: 38px; height: 38px; }
+  .nav-logo img { height: 46px; width: auto; display: block; }
 
   .nav-logo-text {
     font-family: 'Bebas Neue', sans-serif;
@@ -622,7 +622,7 @@
     letter-spacing: 2px;
     color: var(--white);
   }
-  .footer-logo span { color: var(--orange); }
+  .footer-logo img { height: 34px; width: auto; display: block; }
 
   .footer-copy {
     font-size: 0.8rem;
@@ -632,6 +632,7 @@
   /* ─── RESPONSIVE ─── */
   @media (max-width: 900px) {
     nav { padding: 16px 24px; }
+    .nav-logo img { height: 36px; }
     .nav-links { display: none; }
     #hero { padding: 110px 24px 60px; }
     .hero-logo-wrap { display: none; }
@@ -687,26 +688,7 @@
 <!-- ─── NAV ─── -->
 <nav>
   <div class="nav-logo">
-    <!-- Logo SVG recreated from business card -->
-    <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- Speedometer arc -->
-      <path d="M10 38 A22 22 0 0 1 50 38" stroke="rgba(255,255,255,0.4)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-      <!-- Speedometer ticks -->
-      <line x1="10" y1="38" x2="12.5" y2="36" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
-      <line x1="30" y1="16" x2="30" y2="19" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
-      <line x1="50" y1="38" x2="47.5" y2="36" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
-      <!-- Needle -->
-      <line x1="30" y1="38" x2="43" y2="22" stroke="rgba(255,255,255,0.7)" stroke-width="2" stroke-linecap="round"/>
-      <!-- Wrench body -->
-      <rect x="8" y="33" width="44" height="10" rx="5" fill="#F5A623"/>
-      <!-- Wrench head left -->
-      <circle cx="13" cy="38" r="8" fill="#F5A623"/>
-      <circle cx="13" cy="38" r="4" fill="#1a1a1a"/>
-      <!-- Wrench head right -->
-      <circle cx="47" cy="38" r="8" fill="#F5A623"/>
-      <circle cx="47" cy="38" r="4" fill="#1a1a1a"/>
-    </svg>
-    <span class="nav-logo-text"><span>A1</span> Mystery</span>
+    <img src="logo.png" alt="A1 Mystery">
   </div>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
@@ -1181,7 +1163,7 @@
 
 <!-- ─── FOOTER ─── -->
 <footer>
-  <div class="footer-logo"><span>A1</span> Mystery Auto Repair</div>
+  <div class="footer-logo"><img src="logo.png" alt="A1 Mystery"></div>
   <div class="footer-copy">Unit A, 941 Dillingham Rd., Pickering · 647-278-4427 · a1automystery@gmail.com</div>
   <div class="footer-copy">
     <a href="https://www.instagram.com/a1mystery?igsh=eDVnZjJwMzN3b2dr" target="_blank" rel="noopener" style="color:var(--orange); text-decoration:none;">@a1mystery on Instagram</a>
