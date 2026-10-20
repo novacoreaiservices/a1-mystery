@@ -23,7 +23,7 @@
   html { scroll-behavior: smooth; }
 
   body {
-    background: var(--black);
+    background: transparent;
     color: var(--white);
     font-family: 'Barlow', sans-serif;
     overflow-x: hidden;
@@ -34,7 +34,7 @@
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
     padding: 18px 48px;
-    background: rgba(10,10,10,0.92);
+    background: rgba(10,10,10,0.46);
     backdrop-filter: blur(12px);
     border-bottom: 2px solid var(--orange);
   }
@@ -249,7 +249,7 @@
 
   /* ─── TICKER ─── */
   .ticker {
-    background: var(--orange);
+    background: rgba(245,166,35,0.88);
     overflow: hidden;
     padding: 12px 0;
     white-space: nowrap;
@@ -290,7 +290,7 @@
   }
 
   /* ─── SERVICES ─── */
-  #services { background: var(--darker); }
+  #services { background: rgba(13,13,13,0.46); }
 
   .services-header {
     max-width: 600px;
@@ -341,12 +341,12 @@
 
   /* ── FRONT ── */
   .card-front {
-    background: var(--dark);
+    background: rgba(26,26,26,0.58);
     border-left: 3px solid transparent;
     transition: border-color 0.3s, background 0.3s;
   }
   .flip-wrap:hover .card-front {
-    background: #1f1f1f;
+    background: rgba(31,31,31,0.7);
     border-left-color: var(--orange);
   }
 
@@ -388,7 +388,7 @@
 
   /* ── BACK ── */
   .card-back {
-    background: var(--orange);
+    background: rgba(245,166,35,0.92);
     transform: rotateY(180deg);
   }
 
@@ -471,7 +471,7 @@
   }
 
   .why-card {
-    background: var(--dark);
+    background: rgba(26,26,26,0.55);
     border: 1px solid rgba(245,166,35,0.12);
     padding: 32px;
     position: relative;
@@ -501,7 +501,7 @@
 
   /* ─── CTA STRIP ─── */
   #cta-strip {
-    background: var(--orange);
+    background: rgba(245,166,35,0.9);
     padding: 64px 48px;
     display: flex; align-items: center; justify-content: space-between;
     gap: 32px; flex-wrap: wrap;
@@ -529,7 +529,7 @@
   .btn-dark:hover { background: #222; transform: translateY(-2px); }
 
   /* ─── CONTACT ─── */
-  #contact { background: var(--darker); }
+  #contact { background: rgba(13,13,13,0.5); }
 
   .contact-grid {
     display: grid;
@@ -588,7 +588,7 @@
   .form-group input,
   .form-group select,
   .form-group textarea {
-    background: var(--dark);
+    background: rgba(26,26,26,0.55);
     border: 1px solid rgba(255,255,255,0.1);
     color: var(--white);
     padding: 14px 16px;
@@ -609,7 +609,7 @@
 
   /* ─── FOOTER ─── */
   footer {
-    background: var(--darker);
+    background: rgba(13,13,13,0.62);
     border-top: 2px solid var(--orange);
     padding: 40px 48px;
     display: flex; align-items: center; justify-content: space-between;
@@ -643,9 +643,46 @@
     #cta-strip { padding: 48px 24px; }
     footer { padding: 32px 24px; flex-direction: column; text-align: center; }
   }
+  .cine-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background: #0d0d0d url("cinematic-bg.jpg") center 42% / cover no-repeat;
+  }
+  .cine-bg video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 42%;
+    display: block;
+  }
+  .cine-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 70% 40%, rgba(245,166,35,0.08), transparent 55%),
+      linear-gradient(180deg, rgba(13,13,13,0.62) 0%, rgba(13,13,13,0.28) 42%, rgba(13,13,13,0.58) 100%);
+    pointer-events: none;
+  }
+  body > nav,
+  body > section,
+  body > footer,
+  #cta-strip,
+  .ticker { position: relative; z-index: 1; }
+  h1, .hero-sub, h2 { text-shadow: 0 2px 16px rgba(0,0,0,0.55); }
+  @media (prefers-reduced-motion: reduce) {
+    .cine-bg video { display: none; }
+    .ticker-inner { animation: none; }
+  }
 </style>
 </head>
 <body>
+<div class="cine-bg" aria-hidden="true">
+  <video autoplay muted loop playsinline poster="cinematic-bg.jpg">
+    <source src="cinematic-bg.mp4" type="video/mp4">
+  </video>
+</div>
 
 <!-- ─── NAV ─── -->
 <nav>
@@ -961,7 +998,7 @@
 </section>
 
 <!-- ─── WHY US ─── -->
-<section id="why" style="background: var(--black);">
+<section id="why" style="background: rgba(17,17,17,0.42);">
   <div class="why-visual">
     <div class="why-big-num">A1</div>
     <div class="why-cards-list">
