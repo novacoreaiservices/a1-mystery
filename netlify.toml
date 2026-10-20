@@ -3,16 +3,6 @@
   command = ""
 
 [[redirects]]
-  from = "/winter-tires"
-  to = "/"
-  status = 301
-
-[[redirects]]
-  from = "/winter-tires/"
-  to = "/"
-  status = 301
-
-[[redirects]]
-  from = "/winter-tires.html"
-  to = "/"
-  status = 301
+  from = "/*"
+  to = "/index.html"
+  status = 200
